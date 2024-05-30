@@ -33,7 +33,7 @@
 
                     </x-slot:trigger>
 
-
+                        @admin
                         <x-dropdown-item href="{{ route('admin.posts.create') }}"
                                          :active="request()->is(route('admin.posts.create'))"
                         >
@@ -43,7 +43,7 @@
                         <x-dropdown-item href="/admin/dashboard">
                             Dashboard
                         </x-dropdown-item>
-
+                        @admin
 
                     <x-dropdown-item href="/posts">
                         Home

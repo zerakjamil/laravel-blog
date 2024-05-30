@@ -45,7 +45,7 @@ Route::get('authors/{author:username}', [PostController::class , 'index'])->name
 
 //Admin
 Route::name('admin.')->prefix('admin')->middleware('can:admin')->group(function () {
-    Route::name('posts')->prefix('posts')->group(function (){
+    Route::name('posts.')->prefix('posts')->group(function (){
         Route::get('create' , [AdminPostController::class , 'create'])->name('create');
         Route::get('/' , [AdminPostController::class , 'index'])->name('index');
         Route::post('' , [AdminPostController::class , 'store']);

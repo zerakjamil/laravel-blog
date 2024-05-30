@@ -15,7 +15,7 @@
     <nav class="md:flex md:justify-between md:items-center">
         <div>
             <a href={{route('home')}}>
-                <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
+
             </a>
         </div>
 
@@ -33,9 +33,9 @@
 
                     </x-slot:trigger>
 
-                   @admin
-                        <x-dropdown-item href="{{ route('admin.create.post') }}"
-                                         :active="request()->is('admin/posts/create')"
+
+                        <x-dropdown-item href="{{ route('admin.posts.create') }}"
+                                         :active="request()->is(route('admin.posts.create'))"
                         >
                             New Post
                         </x-dropdown-item>
@@ -44,7 +44,7 @@
                             Dashboard
                         </x-dropdown-item>
 
-                    @endadmin
+
                     <x-dropdown-item href="/posts">
                         Home
                     </x-dropdown-item>

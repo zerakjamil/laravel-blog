@@ -8,7 +8,7 @@ class SessionController extends Controller
 {
     public function destroy(){
         auth()->logout();
-        return redirect('../posts')->with('success' , 'GoodBye!');
+        return redirect(route('home'))->with('success' , 'GoodBye!');
     }
 
     public function loginView(){
@@ -22,7 +22,7 @@ class SessionController extends Controller
         ]);
 
         if(auth()->attempt($data)){
-            return redirect('/posts')->with('success' , 'You are logged in successfully');
+            return redirect(route('home'))->with('success' , 'You are logged in successfully');
         }
         return back()->withErrors([
             'username' => 'Your username credential is wrong try again' ,

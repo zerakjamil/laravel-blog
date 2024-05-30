@@ -3,13 +3,13 @@
        <main class="max-w-lg mx-auto mt-10 bg-gray-100 p-6 rounded-xl border-gray-200">
            <div class="text-center mb-5">
            <h1 class="text-bold text-xl block">
-               NETlink
+               Laravel Blog
            </h1>
            <h3>
                Register
            </h3>
            </div>
-           <form action="../posts/register" method="post">
+           <form action="{{route('user.store')}}" method="post">
                @csrf
                <div class="mb-6">
                    <x-form.input name="name" type="text" />

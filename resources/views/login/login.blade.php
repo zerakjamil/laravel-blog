@@ -3,13 +3,13 @@
         <main class="max-w-lg mx-auto mt-10 bg-gray-100 p-6 rounded-xl border-gray-200">
             <div class="text-center mb-5">
                 <h1 class="text-bold text-xl block">
-                    NETlink
+                   Laravel Blog
                 </h1>
                 <h3>
                     Login
                 </h3>
             </div>
-            <form action="../posts/login" method="post">
+            <form action={{route('user.login')}} method="post">
                 @csrf
                 <x-form.input name="username" type="text" />
                 <x-form.input name="password" type="password" />

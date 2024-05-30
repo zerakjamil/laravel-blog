@@ -17,15 +17,25 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//Users
+Route::prefix('user')->group(function () {
+    Route::name('user.')->middleware('guest')->group(function () {
+        Route::get('register', [RegisterController::class, 'create'])->name('register');
+        Route::post('register', [RegisterController::class, 'store'])->name('store');
+        Route::get('login', [SessionController::class, 'loginView'])->name('login');
+        Route::post('login', [SessionController::class, 'login'])->name('login');
+    });
+});
+
 //Posts
 Route::get('/', [ PostController::class , 'index'])->name('home');
-Route::get('/post/{post:slug}' , [PostController::class , 'show'])->name('post');
-Route::get('/posts/register' ,[RegisterController::class, 'create'])->middleware('guest');
-Route::post('/posts/register' ,[RegisterController::class, 'store'])->middleware('guest');
-Route::get('/posts/login' ,[SessionController::class, 'loginView'])->middleware('guest');
-Route::post('/posts/login' ,[SessionController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/posts/logout', [SessionController::class , 'destroy'])->name('logout')->middleware('auth');
-Route::post('/posts/{post:slug}/addcomment', [CommentController::class , 'store'])->name('addcomment')->middleware('auth');
+Route::prefix('posts')->group(function (){
+    Route::get('/posts/{post:slug}' , [PostController::class , 'show'])->name('post');
+    Route::post('/posts/logout', [SessionController::class , 'destroy'])->name('logout')->middleware('auth');
+    Route::post('/posts/{post:slug}/addcomment', [CommentController::class , 'store'])->name('addcomment')->middleware('auth');
+});
+
+
 
 //Category
 Route::get('category/{category:slug}', [PostController::class , 'categoryIndex'])->name('category');
@@ -34,14 +44,16 @@ Route::get('category/{category:slug}', [PostController::class , 'categoryIndex']
 Route::get('authors/{author:username}', [PostController::class , 'index'])->name('authors');
 
 //Admin
+Route::name('admin.')->prefix('admin')->middleware('can:admin')->group(function () {
+    Route::name('posts')->prefix('posts')->group(function (){
+        Route::get('create' , [AdminPostController::class , 'create'])->name('create');
+        Route::get('/' , [AdminPostController::class , 'index'])->name('index');
+        Route::post('' , [AdminPostController::class , 'store']);
+        Route::get('{post}/edit' , [AdminPostController::class , 'edit'])->name('edit');
+        Route::patch('{post}' , [AdminPostController::class , 'update'])->name('update');
+        Route::delete('{post}' , [AdminPostController::class , 'destroy'])->name('delete');
+    });
 
-Route::group(['prefix' => 'admin' , 'middleware' => 'can:admin'] , function () {
-    Route::get('/posts/create' , [AdminPostController::class , 'create'])->name('admin.create.post');
-    Route::get('/posts' , [AdminPostController::class , 'index'])->name('admin.index.post');
-    Route::post('/post' , [AdminPostController::class , 'store']);
-    Route::get('/posts/{post}/edit' , [AdminPostController::class , 'edit'])->name('admin.posts.edit');
-    Route::patch('/posts/{post}' , [AdminPostController::class , 'update'])->name('admin.posts.update');
-    Route::delete('/posts/{post}' , [AdminPostController::class , 'destroy'])->name('admin.posts.delete');
 });
 
 

@@ -26,7 +26,7 @@ class RegisterController extends Controller
         ]);
         $user = User::create($data);
         auth()->login($user);
-        return redirect('/posts')->with('success' , 'Your Account has been successfully created.');
+        return redirect(route('home'))->with('success' , 'Your Account has been successfully created.');
 
     }
 

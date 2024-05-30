@@ -14,7 +14,7 @@
 <section class="px-6 py-8">
     <nav class="md:flex md:justify-between md:items-center">
         <div>
-            <a href="/posts">
+            <a href={{route('home')}}>
                 <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
             </a>
         </div>
@@ -71,8 +71,8 @@
 
 
             @else
-            <a href="/posts/register" class="text-xs font-bold uppercase px-4">Register</a>
-            <a href="{{route('login')}}" class="text-xs font-bold uppercase px-4">Log In</a>
+            <a href={{route('user.register')}} class="text-xs font-bold uppercase px-4">Register</a>
+            <a href="{{route('user.login')}}" class="text-xs font-bold uppercase px-4">Log In</a>
             @endif
             <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                 Subscribe for Updates

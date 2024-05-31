@@ -15,7 +15,7 @@
         </div>
 
         <div class="mt-8 md:mt-0">
-            <a href="/posts" class="text-xs font-bold uppercase">Home Page</a>
+            <a href="{{route('home')}}" class="text-xs font-bold uppercase">Home Page</a>
 
             <a href="#"
                class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">Subscribe

@@ -33,7 +33,8 @@
 
                     </x-slot:trigger>
 
-                        @admin
+                        @auth
+                        @if(Auth::user()->is_admin)
                         <x-dropdown-item href="{{ route('admin.posts.create') }}"
                                          :active="request()->is(route('admin.posts.create'))"
                         >
@@ -43,9 +44,10 @@
                         <x-dropdown-item href="/admin/dashboard">
                             Dashboard
                         </x-dropdown-item>
-                        @admin
+                        @endif
+                        @endauth
 
-                    <x-dropdown-item href="/posts">
+                    <x-dropdown-item href="{{route('home')}}">
                         Home
                     </x-dropdown-item>
 
@@ -60,7 +62,7 @@
 
                     <form
                         id="logout-form"
-                        action="{{route('logout')}}"
+                        action="{{route('user.logout')}}"
                         method="post"
                         class="hidden"
                     >

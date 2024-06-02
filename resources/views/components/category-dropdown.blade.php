@@ -22,7 +22,7 @@
     </x-dropdown-item>
 
     @foreach($categories as $category)
-        <x-dropdown-item href="../posts/?category={{$category->slug}}&{{http_build_query(request()->except('category', 'page'))}}"
+        <x-dropdown-item href="{{route('category',$category->slug)}}&{{http_build_query(request()->except('category', 'page'))}}"
                          :active="request()->is('category/'.$category->slug)" >
             {{ucwords($category->name)}}
         </x-dropdown-item>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Like;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -29,7 +30,8 @@ class PostController extends Controller
     {
         return view('first-post' , [
             'posts' => $post,
-            'comments' => Comment::where('post_id' , $post->id)->latest()->get()
+            'comments' => Comment::where('post_id' , $post->id)->latest()->get(),
+            'likes' => Like::all(),
         ]);
     }
 

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('post_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->text('body');
+            $table->integer('like')->default(0);
+            $table->text('liked_by')->nullable();
             $table->timestamps();
         });
     }

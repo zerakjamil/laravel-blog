@@ -16,11 +16,5 @@
             paginate
         </p>
             {{$posts->links()}}
-
-{{--        @for($i = 1 ; $i <= $pageNumbers; $i++)--}}
-{{--            <a href="../posts/?page={{$i}}"> <p class="inline-flex p-x-4">--}}
-{{--                {{$i}}--}}
-{{--            </p></a>--}}
-{{--        @endfor--}}
     </div>
 </x-layout>

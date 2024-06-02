@@ -1,7 +1,7 @@
 <x-layout>
 
     <x-setting heading="Publish a new post" :categories="$categories">
-        <form action="/admin/post" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data">
             @csrf
 
             <x-form.input name="title" />

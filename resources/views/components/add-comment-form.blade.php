@@ -1,5 +1,5 @@
 @props(['post'])
-<form method="POST" action="../posts/{{$post->slug}}/addcomment" class="bg-grey-100 border border-grey-200 p-6 rounded-xl">
+<form method="POST" action="{{route('posts.addcomment',$post->slug)}}" class="bg-grey-100 border border-grey-200 p-6 rounded-xl">
     @csrf
     <header>
         <h2 class="text-center text-bold">Want to participate?</h2>

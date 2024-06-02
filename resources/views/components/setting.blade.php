@@ -13,7 +13,7 @@
             <ul>
                 <li class="mb-2">
                     <a
-                        href="{{ route('admin.index.post') }}"
+                        href="{{ route('admin.posts.index') }}"
                         class="{{request()->is('admin/posts') ? 'text-blue-500':''}}"
 
                     >
@@ -33,7 +33,7 @@
 
                 <li class="mb-2">
                     <a
-                        href="{{ route('admin.create.post') }}"
+                        href="{{ route('admin.posts.create') }}"
                        class="{{request()->is('admin/posts/create') ? 'text-blue-500':''}}"
 
                     >

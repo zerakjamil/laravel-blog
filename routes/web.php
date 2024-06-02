@@ -32,6 +32,7 @@ Route::name('user.')->prefix('user')->group(function () {
 Route::get('/', [ PostController::class , 'index'])->name('home');
 Route::name('posts.')->prefix('posts')->group(function (){
     Route::get('{post:slug}' , [PostController::class , 'show'])->name('post');
+    Route::post('comments/{commentId}/like', [CommentController::class,'toggleLike'])->name('comments.like')->middleware('auth');
     Route::post('{post:slug}/addcomment', [CommentController::class , 'store'])->name('addcomment')->middleware('auth');
 });
 

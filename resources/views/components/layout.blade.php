@@ -5,6 +5,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<link href="{{ mix('css/app.css') }}" rel="stylesheet">
 <style>
     html{
         scroll-behavior: smooth;
@@ -28,23 +31,22 @@
                         <button
                         class="text-xs font-bold uppercase px-4"
                     >
-                        Welcome, {{auth()->user()->name}}!
+                        Welcome, {{Auth::user()->is_admin ? Auth::user()->name.' (admin)' : Auth::user()->name.'!' }}
                     </button>
-
                     </x-slot:trigger>
 
                         @auth
-                        @if(Auth::user()->is_admin)
-                        <x-dropdown-item href="{{ route('admin.posts.create') }}"
-                                         :active="request()->is(route('admin.posts.create'))"
-                        >
-                            New Post
-                        </x-dropdown-item>
+                            @if(Auth::user()->is_admin == true)
+                                <x-dropdown-item href="{{ route('admin.posts.create') }}"
+                                                 :active="request()->is(route('admin.posts.create'))"
+                                >
+                                    New Post
+                                </x-dropdown-item>
 
-                        <x-dropdown-item href="/admin/dashboard">
-                            Dashboard
-                        </x-dropdown-item>
-                        @endif
+                                <x-dropdown-item href="/admin/dashboard">
+                                    Dashboard
+                                </x-dropdown-item>
+                            @endif
                         @endauth
 
                     <x-dropdown-item href="{{route('home')}}">
@@ -117,3 +119,4 @@
 
 <x-flash />
 </body>
+<script src=""></script>
